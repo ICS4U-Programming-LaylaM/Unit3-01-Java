@@ -20,4 +20,14 @@ public class MyStringStack {
     public MyStringStack() {
         _stack = new Stack<String>();
     }
+
+    /**
+    * This functions adds a number to the top of the stack.
+    *
+    * @param string as string
+    */
+    public void push(String string) {
+        _stack.push(string);
+        System.out.println("Added " + string + " to top of the stack.");
+    }
 }
