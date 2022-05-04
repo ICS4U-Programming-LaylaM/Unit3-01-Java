@@ -22,12 +22,26 @@ public class MyIntStack {
     }
 
     /**
-    * This functions adds a number to the top of the stack.
+    * This function adds a number to the top of the stack.
     *
     * @param number as int
     */
     public void push(int number) {
         _stack.push(number);
         System.out.println("Added " + number + " to top of the stack.");
+    }
+
+    /**
+    * This function removes the number at the top of the stack.
+    */
+    public void pop() {
+        if (_stack.empty()) {
+            System.out.println("\nThe stack is empty.");
+        } else {
+            final int topNum = _stack.peek();
+            _stack.pop();
+            System.out.println("\nRemoved " + topNum
+                 + " from the top of the stack.");
+        }
     }
 }

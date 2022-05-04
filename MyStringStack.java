@@ -22,12 +22,26 @@ public class MyStringStack {
     }
 
     /**
-    * This functions adds a number to the top of the stack.
+    * This function adds a number to the top of the stack.
     *
     * @param string as string
     */
     public void push(String string) {
         _stack.push(string);
         System.out.println("Added " + string + " to top of the stack.");
+    }
+
+    /**
+    * This function removes the string at the top of the stack.
+    */
+    public void pop() {
+        if (_stack.empty()) {
+            System.out.println("\nThe stack is empty.");
+        } else {
+            final String topString = _stack.peek();
+            _stack.pop();
+            System.out.println("\nRemoved " + topString
+                 + " from the top of the stack.");
+        }
     }
 }
