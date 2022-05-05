@@ -54,6 +54,8 @@ final class Main {
         String userString;
         String userMethod;
         String userAnswer3;
+        String userAnswer4;
+        String userAnswer5;
 
         myObj = new Scanner(System.in);
 
@@ -62,20 +64,22 @@ final class Main {
         final MyStringStack myStackString = new MyStringStack();
 
         outerloop: while (true) {
-            System.out.print("\nDo you wish to use push or "
-                + "pop (enter q to quit)? ");
+            System.out.print("\nDo you wish to use push, pop, "
+                + "peek or clear (enter q to quit)? ");
             userMethod = myObj.nextLine();
             userMethod = userMethod.toLowerCase();
 
+            // Push method
             if ("push".equals(userMethod)) {
                 midloop: while (true) {
-                    System.out.println("\nDo you wish to add to the int "
-                        + "or string stack?");
+                    System.out.println("\nDo you wish to add to the "
+                        + "int or string stack?");
                     System.out.print("Enter either int, string or q "
                         + "to quit: ");
                     userAnswer = myObj.nextLine();
                     userAnswer = userAnswer.toLowerCase();
 
+                    // Quits the program
                     if (QUIT.equals(userAnswer)) {
                         break outerloop;
                     } else if (INTEGER.equals(userAnswer)) {
@@ -87,6 +91,7 @@ final class Main {
                             try {
                                 userNumInt = Integer.parseInt(userNum);
 
+                                // Adds integer to stack
                                 myStackInt.push(userNumInt);
 
                                 while (true) {
@@ -100,10 +105,13 @@ final class Main {
                                     } else if (NO.equals(userAnswer2)) {
                                         break midloop;
                                     } else {
-                                        System.out.println("\nPlease enter"
-                                            + " either y or n.");
+                                        System.out.println("\nPlease"
+                                            + " enter either y or n.");
                                     }
                                 }
+
+                            // Error message if the user does not
+                            // input an integer
                             } catch (NumberFormatException ex) {
                                     System.out.println("\nPlease enter "
                                         + "a valid number.");
@@ -115,6 +123,7 @@ final class Main {
                                 + "wish to add? ");
                             userString = myObj.nextLine();
 
+                            // Adds string to stack
                             myStackString.push(userString);
 
                             while (true) {
@@ -134,36 +143,97 @@ final class Main {
                             }
                         }
                     } else {
-                        System.out.println("\nPlease enter either int,"
-                            + " string or q.");
+                        System.out.println("\nPlease enter"
+                            + " either int, string or q.");
                     }
                 }
+
+            // Pop method
             } else if ("pop".equals(userMethod)) {
                 while (true) {
                     System.out.println("\nDo you wish to remove from the int"
                         + " or string stack?");
-                    System.out.print("Enter either int, string or q to quit: ");
+                    System.out.print("Enter either int, string "
+                         + "or q to quit: ");
                     userAnswer3 = myObj.nextLine();
                     userAnswer3 = userAnswer3.toLowerCase();
 
                     if (QUIT.equals(userAnswer3)) {
                         break outerloop;
                     } else if (INTEGER.equals(userAnswer3)) {
+                        // Removes top number from stack
                         myStackInt.pop();
                         break;
                     } else if (STRING.equals(userAnswer3)) {
+                        // Removes top string from stack
                         myStackString.pop();
                         break;
                     } else {
-                        System.out.println("\nPlease enter either int, "
-                            + "string or q to quit.");
+                        System.out.println("\nPlease "
+                            + "enter either int, string or q to quit.");
                     }
                 }
+
+            // Peek method
+            } else if ("peek".equals(userMethod)) {
+                while (true) {
+                    System.out.println("\nDo you wish to peek the int "
+                         + "or string stack?");
+                    System.out.print("Enter either int, string or "
+                        + "q to quit: ");
+                    userAnswer4 = myObj.nextLine();
+                    userAnswer4 = userAnswer4.toLowerCase();
+
+                    if (QUIT.equals(userAnswer4)) {
+                        break outerloop;
+                    } else if (INTEGER.equals(userAnswer4)) {
+                        // Displays the number at the top of stack
+                        myStackInt.peek();
+                        break;
+                    } else if (STRING.equals(userAnswer4)) {
+                        // Displays the string at the top of stack
+                        myStackString.peek();
+                        break;
+                    } else {
+                        System.out.println("\nPlease enter either int, string"
+                            + " or q to quit.");
+                    }
+                }
+
+            // Clear method
+            } else if ("clear".equals(userMethod)) {
+                while (true) {
+                    System.out.println("\nDo you wish to clear the"
+                         + " int or string stack?");
+                    System.out.print("Enter either int, string or"
+                         + " q to quit: ");
+                    userAnswer5 = myObj.nextLine();
+                    userAnswer5 = userAnswer5.toLowerCase();
+
+                    if (QUIT.equals(userAnswer5)) {
+                        break outerloop;
+                    } else if (INTEGER.equals(userAnswer5)) {
+                        // Clears the int stack
+                        myStackInt.clear();
+                        break;
+                    } else if (STRING.equals(userAnswer5)) {
+                        // Clears the string stack
+                        myStackString.clear();
+                        break;
+                    } else {
+                        System.out.println("\nPlease enter either int,"
+                            + " string or q to quit.");
+                    }
+                }
+
+            // Quits the program
             } else if (QUIT.equals(userMethod)) {
                 break;
+
+            // If the user does not enter a valid input
             } else {
-                System.out.println("\nPlease enter either push, pop"
-                    + " or q to quit.");
+                System.out.println("\nPlease enter either push, pop, peek,"
+                    + " clear or q to quit.");
             }
         }
         myObj.close();

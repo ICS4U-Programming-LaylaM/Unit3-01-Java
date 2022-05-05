@@ -36,12 +36,39 @@ public class MyIntStack {
     */
     public void pop() {
         if (_stack.empty()) {
-            System.out.println("\nThe stack is empty.");
+            System.out.println("\nThe stack "
+                + "is empty.");
         } else {
             final int topNum = _stack.peek();
             _stack.pop();
             System.out.println("\nRemoved " + topNum
                  + " from the top of the stack.");
+        }
+    }
+
+    /**
+    * This function finds and displays the number at the top of the stack.
+    */
+    public void peek() {
+        if (_stack.empty()) {
+            System.out.println("\nThe stack"
+                 + " is empty.");
+        } else {
+            System.out.println("\nThe number at the top of the stack is: "
+                 + _stack.peek());
+        }
+    }
+
+    /**
+    * This function clears the stack of all its numbers.
+    */
+    public void clear() {
+        if (_stack.empty()) {
+            System.out.println("\nThe stack is "
+                + "empty.");
+        } else {
+            _stack.clear();
+            System.out.println("\nThe stack has been cleared.");
         }
     }
 }

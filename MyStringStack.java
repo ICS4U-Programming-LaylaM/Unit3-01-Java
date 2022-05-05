@@ -36,12 +36,39 @@ public class MyStringStack {
     */
     public void pop() {
         if (_stack.empty()) {
-            System.out.println("\nThe stack is empty.");
+            System.out.println("\nThe stack "
+                + "is empty.");
         } else {
             final String topString = _stack.peek();
             _stack.pop();
             System.out.println("\nRemoved " + topString
                  + " from the top of the stack.");
+        }
+    }
+
+    /**
+    * This function finds and displays the string at the top of the stack.
+    */
+    public void peek() {
+        if (_stack.empty()) {
+            System.out.println("\nThe stack"
+                 + " is empty.");
+        } else {
+            System.out.println("\nThe string at the top of the stack is: "
+                 + _stack.peek());
+        }
+    }
+
+    /**
+    * This function clears the stack of all its strings.
+    */
+    public void clear() {
+        if (_stack.empty()) {
+            System.out.println("\nThe stack is "
+                + "empty.");
+        } else {
+            _stack.clear();
+            System.out.println("\nThe stack has been cleared.");
         }
     }
 }
